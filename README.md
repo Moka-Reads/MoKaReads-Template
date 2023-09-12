@@ -1,4 +1,4 @@
-# The MoKa Reads Publications Template 
+# The MoKa Reads Template 
 ## Version 1.0.0-alpha 
 
 > This code is under the Attribution-ShareAlike 4.0 International. To view a copy of 
