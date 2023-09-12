@@ -1,0 +1,340 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MoKa Reads Publication Template
+% Version 1.0.0-alpha 
+%
+% Authors:
+% - Mustafif Khan (mustafif.khan@mkproj.com or mustafif0929@gmail.com)
+% 
+% License:
+%  MoKa Reads Template © 2023 by Mustafif Khan is licensed under 
+%  Attribution-ShareAlike 4.0 International. To view a copy of 
+%  this license, visit http://creativecommons.org/licenses/by-sa/4.0/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             Packages                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Mathematical related packages 
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb}
+\usepackage{tikz} 
+% Colors 
+\usepackage{xcolor}
+
+% Define colors here: 
+%% Zig Colors 
+\definecolor{zig-green}{RGB}{0, 100, 0}
+\definecolor{zig-blue}{RGB}{14, 110, 176}
+\definecolor{zig-red}{RGB}{199, 68, 53}
+\definecolor{zig-orange}{RGB}{255, 153, 51}
+
+%% Kotlin Colors
+\definecolor{kotlin}{RGB}{249, 129, 42}
+
+%% Python Colors 
+\definecolor{python}{RGB}{53, 114, 165}
+
+%% Java Colors 
+\definecolor{java}{RGB}{235, 95, 35}
+
+%% Rust Colors 
+\definecolor{rust}{RGB}{231, 76, 60}
+
+%% Swift Colors 
+\definecolor{swift}{RGB}{249, 129, 42}
+
+%% Go Colors 
+\definecolor{go}{RGB}{0, 172, 215}
+
+%% C Colors 
+\definecolor{c-lang}{RGB}{0,46,99}
+
+%% C++ Colors 
+\definecolor{cplusplus}{RGB}{0, 84, 166} 
+
+%% Terminal Colors 
+\definecolor{terminal-color}{RGB}{0, 0, 0}
+
+%% Info color 
+%% MoKa Reads Branded #ad765b
+\definecolor{info-color}{RGB}{173,118,91}
+
+% Remember what to do 
+\newcommand{\todo}[1]{\section*{\textcolor{red}{\textbf{TODO}} #1}}
+
+\usepackage{textcomp}
+% Extra Packages 
+\usepackage{enumerate} % custom item numbering 
+\usepackage[ruled]{algorithm2e} % algorithms 
+\usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
+\usepackage{minitoc} % Mini table of contents 
+\usepackage{graphicx} % Images 
+\usepackage{listings} % File listings, with syntax highlighting
+\usepackage{fontawesome5} % font awesome icons 
+\usepackage{fontmfizz} 
+\usepackage{academicons}
+\usepackage{fontspec}
+\usepackage{titling}
+\usepackage{tcolorbox}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage[type=CC, modifier=by-sa, version=4.0]{doclicense}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,
+    urlcolor=info-color,
+}
+
+% Document Page Specifications 
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=14pt, footskip=1cm, headsep=1.2cm]{geometry}
+\usepackage{fancyhdr}
+% Header configuration
+\fancyhead[LE,RO]{\nouppercase{\leftmark}} % Chapter and section on both even (LE) and odd (RO) pages
+\fancyhead[RE,LO]{} % Empty center header
+\renewcommand{\headrulewidth}{0.4pt} % Header rule thickness
+
+% Footer configuration
+\fancyfoot[LE,RO]{} % Page number on left (LE) for even pages and on right (RO) for odd pages
+\fancyfoot[RE,LO]{} % Empty center footer
+\renewcommand{\footrulewidth}{0.4pt} % Footer rule thickness
+
+% Zig Language
+\lstdefinelanguage{Zig}{
+	keywords=[1]{align, and, anyerror, asm, async, await, break, catch,
+			comptime, const, continue, defer, else, enum, error, export, extern, false, fn,
+			for, if, inline, noalias, null, or, orelse, packed, pub, return, struct,
+			suspend, switch, tag, test, threadlocal, true, try, uninit, union, unreachable,
+			usingnamespace, var, volatile, while},
+	keywordstyle=[1]{\color{zig-blue}\bfseries},
+	keywords=[2]{fn, test},
+	keywordstyle=[2]{\color{zig-green}\bfseries},
+	keywords=[3]{null, true, false, !},
+	keywordstyle=[3]{\color{zig-red}},
+	morekeywords=[4]{bool, i8, u8, i16, u16, i32, u32, i64, u64, f32, f64,
+			void},
+	keywordstyle=[4]{\color{zig-green}},
+	morekeywords=[5]{@as, @alignCast, @bitCast, @atomicLoad, @atomicStore,
+			@breakpoint, @byteSwap, @bitOffsetOf, @alignOf, @cDefine, @cImport, @cInclude,
+			@cUndef, @clz, @ctz, @compileError, @compileLog, @embedFile, @import, @intCast,
+			@memberCount, @memberName, @memberType, @popCount, @setEvalBranchQuota,
+			@setFloatMode, @shlExact, @shrExact, @tagName, @TypeOf, @TypeName,
+			@undeclaredIdent, @volatileLoad, @volatileStore},
+	keywordstyle=[5]{\color{zig-orange}\bfseries},
+	sensitive=true,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	stringstyle=\color{zig-red},
+	morestring=[b]{"}
+}
+\newcommand{\globalverbatimfont}{\small}
+\makeatletter
+\preto{\verbatim@font}{\globalverbatimfont}
+\makeatother
+\usepackage{listings-rust}
+
+
+% listings settings 
+\lstset{
+	language = Zig,
+	basicstyle=\ttfamily\scriptsize,
+	numbers=left,
+	numberstyle=\tiny\color{gray!75!black},
+	stringstyle=\color{zig-red},
+	breaklines=true,
+	postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space},
+	tabsize=4,
+	showstringspaces=false,
+	captionpos=b,
+	xleftmargin=1em,
+	framexleftmargin=0.5em,
+	framexrightmargin=0.5em,
+	aboveskip=1em,
+	belowskip=1em,
+	abovecaptionskip=0.5em,
+	belowcaptionskip=0.5em,
+}
+
+% Program File Graphic 
+\usetikzlibrary{calc}
+
+% Base for code snippet files 
+\mdfdefinestyle{pfile}{
+	innertopmargin=0.8\baselineskip,
+	innerbottommargin=0.8\baselineskip,
+    topline=false, bottomline=false,
+    leftline=false, rightline=false,
+    leftmargin=2cm,
+    rightmargin=2cm,
+    backgroundcolor = black!5!white, 
+    singleextra={%
+        \draw[fill=\fillcolor, rounded corners=5pt](P)++(0,-1.5em)rectangle(P-|O);
+        \node[anchor=north west]
+        at(P-|O){\mdicon \hspace{0.5em} \ttfamily\mdfilename};
+        %
+        \def\l{4em}
+        \draw[rounded corners=5pt](O-|P)++(-\l,0)--++(\l,0)--(P)--(P-|O)--(O)--cycle;
+    },
+    nobreak,
+}
+
+% A terminal box 
+\mdfdefinestyle{terminal}{
+	innertopmargin=1.8\baselineskip,
+	innerbottommargin=0.8\baselineskip,
+    topline=false, bottomline=false,
+    leftline=false, rightline=false,
+    leftmargin=2cm,
+    rightmargin=2cm,
+    backgroundcolor = black!5!white, 
+    singleextra={%
+        \draw[fill=\fillcolor, rounded corners=5pt](P)++(0,-1.5em)rectangle(P-|O);
+        \node[anchor=north west]
+        at(P-|O){\mdicon \hspace{0.5em} \ttfamily\mdfilename};
+        %
+        \def\l{4em}
+        \draw[rounded corners=5pt](O-|P)++(-\l,0)--++(\l,0)--(P)--(P-|O)--(O)--cycle;
+    },
+    nobreak,
+}
+% Define a custom environment for file contents
+\newenvironment{pfile}[3][Program]{ % Set the default filename to "Program"
+    \medskip
+    \newcommand{\mdfilename}{#1}
+    \newcommand{\fillcolor}{#2}
+    \newcommand{\mdicon}{#3} % adds an icon, default is \faGithub
+	\medskip
+    \begin{mdframed}[style=pfile]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+        }{
+    \end{mdframed}
+    \medskip
+}
+% File Implementations 
+\newenvironment{zigfile}[1][Program]{%
+    \medskip
+    \newcommand{\mdfilename}{\color{white}#1}
+    \newcommand{\fillcolor}{zig-orange}
+    \newcommand{\mdicon}{\color{white}\aiZoteroSquare} 
+    \medskip
+    \begin{mdframed}[style=pfile]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+}{%
+    \end{mdframed}
+    \medskip
+}
+
+\newenvironment{terminal}[1][Terminal]{%
+    \medskip
+    \newcommand{\mdfilename}{\color{white}#1}
+    \newcommand{\fillcolor}{terminal-color}
+    \newcommand{\mdicon}{\color{white}\faTerminal} 
+    \medskip
+    \begin{mdframed}[style=terminal]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+}{%
+    \end{mdframed}
+    \medskip
+}
+
+\newenvironment{rustfile}[1][Program]{%
+    \medskip
+    \newcommand{\mdfilename}{#1}
+    \newcommand{\fillcolor}{rust}
+    \newcommand{\mdicon}{\mfRust} 
+    \medskip
+    \begin{mdframed}[style=pfile]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+}{%
+    \end{mdframed}
+    \medskip
+}
+
+\newenvironment{cfile}[1][Program]{%
+    \medskip
+    \newcommand{\mdfilename}{\color{white}#1}
+    \newcommand{\fillcolor}{c-lang}
+    \newcommand{\mdicon}{\color{white}\mfC} 
+    \medskip
+    \begin{mdframed}[style=pfile]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+}{%
+    \end{mdframed}
+    \medskip
+}
+
+\newenvironment{cppfile}[1][Program]{%
+    \medskip
+    \newcommand{\mdfilename}{\color{white}#1}
+    \newcommand{\fillcolor}{cplusplus}
+    \newcommand{\mdicon}{\color{white}\mfCplusplus} 
+    \medskip
+    \begin{mdframed}[style=pfile]
+    \addcontentsline{lof}{subsection}{\mdfilename}% Add file entry to the list of files
+}{%
+    \end{mdframed}
+    \medskip
+}
+
+\newcounter{Exercise} % Stores the current question number that gets iterated with each new question
+% Define a custom environment for numbered questions
+\newenvironment{exercise}[1][\unskip]{
+	\bigskip
+	\stepcounter{Exercise}
+	\newcommand{\mdfilename}{Exercise \theExercise#1}
+	\newcommand{\fillcolor}{zig-orange}
+	\newcommand{\mdicon}{\faPencilRuler}
+	\begin{mdframed}[style=pfile]
+		\small
+		\paragraph*{Objective:}
+		}{	
+	\end{mdframed}
+	\medskip
+}
+
+% Info Block
+\mdfdefinestyle{info}{%
+  topline=false, bottomline=false,
+  leftline=false, rightline=false,
+  nobreak,
+  singleextra={%
+    \fill[info-color](P-|O)circle[radius=0.4em];
+    \node at(P-|O){\color{white}\scriptsize\bf i};
+    \draw[very thick, color=info-color](P-|O)++(0,-0.8em)--(O);
+  }
+}
+\newenvironment{info}[1][Info:]{ 
+  \medskip
+  \begin{mdframed}[style=info]
+    \noindent{\color{info-color}\textbf{#1}}
+    }{
+  \end{mdframed}
+}
+
+% Warning Block
+\mdfdefinestyle{warning}{
+  topline=false, bottomline=false,
+  leftline=false, rightline=false,
+  nobreak,
+  singleextra={%
+    \draw(P-|O)++(-0.5em,0)node(tmp1){};
+    \draw(P-|O)++(0.5em,0)node(tmp2){};
+    \fill[red,rotate around={45:(P-|O)}](tmp1)rectangle(tmp2);
+    \node at(P-|O){\color{white}\scriptsize\bf !};
+    \draw[very thick, color=red](P-|O)++(0,-1em)--(O);
+  }
+}
+\newenvironment{warn}[1][Warning:]{
+  \medskip
+  \begin{mdframed}[style=warning]
+    \noindent{\color{red}\uppercase{\textbf{#1}}}
+    }{
+  \end{mdframed}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
